@@ -9,7 +9,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "test": "jest"
+    "test": "jest",
+    "test:ci": "jest --config=jest.config.ci.js --coverage --watchAll=false",
+    "test:env": "jest --testNamePattern=\"Test Environment Verification\" --verbose"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",

@@ -1,1 +1,1 @@
-// Setup file for Jest tests 
+// Setup file for Jest tests in Node.js environment 

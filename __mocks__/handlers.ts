@@ -27,6 +27,7 @@ const mockPokemonData = {
 
 export const handlers = [
   http.get("https://pokeapi.co/api/v2/pokemon", () => {
+    console.log("✅ Mocking Pokemon API call with MSW");
     return HttpResponse.json(mockPokemonData);
   }),
 ];

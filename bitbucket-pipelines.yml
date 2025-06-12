@@ -1,0 +1,40 @@
+image: node:18
+
+pipelines:
+  default:
+    - step:
+        name: Install and Test
+        caches:
+          - node
+                script:
+          # Install dependencies
+          - npm ci --legacy-peer-deps
+          
+          # Verify environment
+          - echo "Node.js version:" && node --version
+          - echo "NPM version:" && npm --version
+          
+          # Verify Jest is configured for Node.js
+          - echo "Jest config check:"
+          - cat jest.config.js | grep testEnvironment
+          
+          # Run tests with CI configuration
+          - npm run test:ci
+          
+          # Run environment verification test specifically
+          - npm run test:env
+
+        artifacts:
+          - test-results/**
+          - coverage/**
+
+  branches:
+    main:
+      - step:
+          name: Install, Test and Deploy
+          caches:
+            - node
+          script:
+            - npm ci --legacy-peer-deps
+            - npm test -- --coverage --watchAll=false
+            - echo "All tests passed! ✅"
