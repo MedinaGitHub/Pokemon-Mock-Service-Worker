@@ -1,0 +1,17 @@
+module.exports = {
+  preset: 'react-native',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  testEnvironment: 'node',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
+  transformIgnorePatterns: [
+    'node_modules/(?!(react-native|@react-native|react-native-.*|@react-navigation|expo.*|msw)/)'
+  ],
+  collectCoverageFrom: [
+    'components/**/*.{ts,tsx}',
+    'app/**/*.{ts,tsx}',
+    '!**/*.d.ts',
+  ],
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/$1',
+  },
+}; 
